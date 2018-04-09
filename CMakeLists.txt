@@ -3,8 +3,13 @@ project(freetype_example)
 
 set(CMAKE_VERBOSE_MAKEFILE TRUE)
 
-include(${CMAKE_CURRENT_BINARY_DIR}/conanbuildinfo.cmake)
+include(conanbuildinfo.cmake)
 conan_basic_setup()
 
-add_executable(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/clfontpng.cc)
+add_executable(${PROJECT_NAME} clfontpng.cc)
 target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS})
+
+install(TARGETS ${PROJECT_NAME}
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib)

@@ -3,9 +3,7 @@
 Trying to solve https://github.com/bincrafters/community/issues/216
 
 #### build
-
-On linux, run
-    $ ./build.sh
+    conan create . user/testing
 
 #### Requirements
 - Conan >1.0
