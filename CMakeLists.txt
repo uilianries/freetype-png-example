@@ -6,8 +6,10 @@ set(CMAKE_VERBOSE_MAKEFILE TRUE)
 include(conanbuildinfo.cmake)
 conan_basic_setup()
 
+find_package(Freetype REQUIRED)
+
 add_executable(${PROJECT_NAME} clfontpng.cc)
-target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS})
+target_link_libraries(${PROJECT_NAME} ${FREETYPE_LIBRARY})
 
 install(TARGETS ${PROJECT_NAME}
         RUNTIME DESTINATION bin

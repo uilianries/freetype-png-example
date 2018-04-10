@@ -14,9 +14,6 @@
 
 #include <stdio.h>
 
-#include <unicode/umachine.h>
-#include <unicode/utf.h>
-
 #include <ft2build.h>
 #include FT_FREETYPE_H
 #include FT_TRUETYPE_TABLES_H
@@ -338,13 +335,13 @@ class App {
  private:
   bool UTF8ToCodepoint(const char* text) {
     int32_t i = 0, length = strlen(text), c;
-    while (i < length) {
-      U8_NEXT(text, i, length, c);
-      if (c < 0) {
+    for (; i < length; ++i) {
+      c = isalnum(text[i]) || ispunct(text[i]) || isspace(text[i]);
+      if (!c) {
         std::cerr << "Invalid input text" << std::endl;
         return false;
       }
-      codepoints_.push_back(c);
+      codepoints_.push_back(text[i]);
     }
     return true;
   }

@@ -12,8 +12,7 @@ class ExampleConan(ConanFile):
     exports_sources = ["CMakeLists.txt", "clfontpng.cc"]
     generators = 'cmake'
     settings = "os", "arch", "compiler", "build_type"
-    requires = "freetype/2.9.0@bincrafters/stable", "icu/60.2@bincrafters/stable"
-    default_options = "*:shared=False"
+    requires = "freetype/2.9.0@bincrafters/stable"
 
     def build(self):
         cmake = CMake(self)
